@@ -9,16 +9,15 @@ This README provides instructions on how to set up and run both the backend and 
 ├── backend/
 └── frontend/
 ```
+## Make sure you have docker installed
 
-- Make sure you have docker installed
+### Short process - Just run the below in the root directory which will just build and run the containers
 
-## Just run the below in the root directory which will just build and run the containers
-
-### For silent mode
+- For silent mode
 
 `docker compose up --build -d`
 
-### For version with logs run
+- For version with logs run
 
 `docker compose up --build`
 
@@ -28,7 +27,7 @@ This README provides instructions on how to set up and run both the backend and 
 
 `-d`: Runs the containers in detached (background) mode.
 
-## To stop docker and containers
+### To stop docker and containers
 
 `docker compose down`
 
