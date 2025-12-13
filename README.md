@@ -111,3 +111,32 @@ This section describes how to set up and run the frontend application.
 - **Axios:** A promise-based HTTP client for the browser and Node.js. _(Used for making asynchronous HTTP requests to communicate with the backend API.)_
 - **jsPDF:** A JavaScript library to generate PDF documents client-side. _(Used for enabling the application to create and download PDF files directly in the browser.)_
 - **Redux:** A predictable state container for JavaScript apps. _(Used for managing the application's state in a centralized and predictable way, making it easier to handle complex data flows.)_
+
+## Docker commands
+
+You have to build the image using cmd below
+`docker build -t budget_tracking_app .`
+
+`-t`: Short for TAG. Give your image a tag name
+`.`: The period at the end is basically the path of the directory which is the root of this file for us.
+
+To run the container
+`docker run -p 9000:9000 budget-frontend`
+`-p 9000:9000`: This is port forwarding. Meaning the docker container and your local system talking on the same port
+
+Same for backend but with port 8000
+`docker run -p 8000:8000 budget-backend`
+
+## After adding the docker-compose.yml file, just run the below in the root directory which will just build and run the containers
+
+`docker compose up --build -d`
+
+`up`: Builds, creates, and starts all services.
+
+`--build`: Forces a rebuild of images (useful when you change your Dockerfiles or code).
+
+`-d`: Runs the containers in detached (background) mode.
+
+## To stop docker and containers
+
+`docker compose down`

@@ -1,0 +1,35 @@
+services:
+  # --- 1. Python Backend Service ---
+  backend:
+    build:
+      context: ./backend # Path to your backend directory containing the Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      # Map container port 8000 to host port 8000 (optional, for direct access/debugging)
+      - "8000:8000"
+    environment:
+      # Optional: Set environment variables for the backend
+      # This is how you would pass database credentials, etc.
+      # EXAMPLE: DATABASE_URL: "postgres://user:pass@db/mydb"
+      PYTHONUNBUFFERED: 1 # Good practice for Python logs
+    # Give the container a simple name on the network
+    container_name: budget-backend
+
+  # --- 2. Vite/React Frontend Service ---
+  frontend:
+    # Use 'build' if you have a Dockerfile for the frontend
+    build:
+      context: ./frontend # Path to your frontend directory containing the Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      # Map container port 9000 to host port 9000
+      - "9000:9000"
+    depends_on:
+      - backend # Ensures the backend starts before the frontend
+
+    # crucial for communication: Overwrite the VITE/React app's API base URL
+    environment:
+      # VITE_API_URL is a common Vite/React environment variable
+      # IMPORTANT: Use the SERVICE NAME 'backend' (not 'localhost' or '0.0.0.0')
+      VITE_API_URL: http://backend:8000
+    container_name: budget-frontend
