@@ -10,6 +10,30 @@ This README provides instructions on how to set up and run both the backend and 
 └── frontend/
 ```
 
+- Make sure you have docker installed
+
+## Just run the below in the root directory which will just build and run the containers
+
+### For silent mode
+
+`docker compose up --build -d`
+
+### For version with logs run
+
+`docker compose up --build`
+
+`up`: Builds, creates, and starts all services.
+
+`--build`: Forces a rebuild of images (useful when you change your Dockerfiles or code).
+
+`-d`: Runs the containers in detached (background) mode.
+
+## To stop docker and containers
+
+`docker compose down`
+
+# Long process
+
 ## Backend Setup (Python)
 
 This section details the steps to set up and run the backend server.
@@ -129,11 +153,17 @@ Same for backend but with port 8000
 
 ## After adding the docker-compose.yml file, just run the below in the root directory which will just build and run the containers
 
+### For silent mode
+
 `docker compose up --build -d`
+
+### For version with logs run
+
+`docker compose up --build`
 
 `up`: Builds, creates, and starts all services.
 
-`--build`: Forces a rebuild of images (useful when you change your Dockerfiles or code).
+`--build`: Forces a rebuild of images (useful when you change your Docker files or code).
 
 `-d`: Runs the containers in detached (background) mode.
 
